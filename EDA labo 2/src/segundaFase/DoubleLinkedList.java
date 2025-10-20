@@ -28,9 +28,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public T removeFirst() {
 		// Elimina el primer elemento de la lista
         // Precondici�n: 
+		Node<T> first = last.next;
 		T aux = null;
 		if (last!=null) {
-			Node<T> first = last.next;
 			if (last==first) {
 				aux = last.data;
 				last=null;
@@ -175,5 +175,6 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		}
 
 }
+
 
 
