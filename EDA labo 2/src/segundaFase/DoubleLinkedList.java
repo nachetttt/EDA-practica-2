@@ -32,6 +32,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		Node<T> aux = null;
 		if (last!=null) {
 			if (last.next==first) {
+				aux = last;
 				last=null;
 			}else {
 				aux = first;
@@ -174,3 +175,4 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		}
 
 }
+
