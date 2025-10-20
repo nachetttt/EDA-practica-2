@@ -5,11 +5,14 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 	public void add(T elem){
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 
+		//TODO hacer este método
+
 	}
 	
 	public OrderedDoubleLinkedList<T> intersection(OrderedDoubleLinkedList<T> lista){
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 
+		//TODO hacer este método
 
 	}
 

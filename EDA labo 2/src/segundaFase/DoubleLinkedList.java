@@ -68,6 +68,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	//Elimina un elemento concreto de la lista
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		if(find(elem)!=null) {
+			//TODO hacer este método
 			
 		}
 	}
@@ -75,35 +76,40 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public void removeAll(T elem) {
 	//Elimina todas las apariciones de un elemento de la lista
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		
+		//TODO hacer este método
 	}
 
 	public T first() {
 	//Da acceso al primer elemento de la lista
-	      // COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-	}
+		Node<T> first = last.next;
+			return first.data;
+		}
 
 	public T last() {
 	//Da acceso al �ltimo elemento de la lista
-	      // COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		return last.data;
 	}
 
 	public DoubleLinkedList<T> clone(){
 		// Devuelve una copia de la lista (no duplica el puntero)
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
+		
+		//TODO hacer este método
 	} 
 
 
 	public boolean contains(T elem) {
 	//Determina si la lista contiene un elemento concreto
-		      if (isEmpty())
-		          return false;
-		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-		      
+		boolean contiene = false;
+		      if (!isEmpty() && find(elem)!=null) {
+		    	  contiene=true;
+		      }
+		return contiene;     
 	}
 
 	public T find(T elem) {
 	//Determina si la lista contiene un elemento concreto, y develve su referencia, null en caso de que no est�
-		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		Node<T> act = null;
 		boolean enc = false;
 		if(!isEmpty()) {
@@ -116,7 +122,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 			}while(act!=last && !enc);				
 		}
 		if(enc) {
-			return act; //por qué me da error?
+			return act.data; //TODO por qué me da error?
 		}else {
 			return null;
 		}
@@ -137,14 +143,17 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 }
 	
 	/** Return an iterator to the stack that iterates through the items . */ 
-	public Iterator<T> iterator() { return new ListIterator(); } 
+	public Iterator<T> iterator() {
+		
+		return new ListIterator(); 
+	} 
 
 	   // an iterator, doesn't implement remove() since it's optional 
 	   private class ListIterator implements Iterator<T> { 
 
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 
-
+		   //TODO hacer este método
 
 	   } // private class
 		
