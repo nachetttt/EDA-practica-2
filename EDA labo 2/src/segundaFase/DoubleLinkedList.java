@@ -68,18 +68,51 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 
 	public T remove(T elem) {
 	//Elimina un elemento concreto de la lista
-		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-		if(find(elem)!=null) {
-			//TODO hacer este método
-			
+		// CALCULAR EL COSTE
+		if (!isEmpty()) {
+			Node<T> act = last.next;
+		    do {
+		        if (act.data.equals(elem)) {
+		            T dato = act.data;
+		            if (act == act.next) {
+		                last = null;
+		            } else {
+		                act.prev.next = act.next;
+		                act.next.prev = act.prev;
+		                if (act == last) {
+		                    last = act.prev;
+		                }
+		            }
+		            count--;
+		            return dato;
+		        }
+		        act = act.next;
+		    } while (act != last.next);
 		}
+		return null;
 	}
 	
 	public void removeAll(T elem) {
 	//Elimina todas las apariciones de un elemento de la lista
-		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
-		
-		//TODO hacer este método
+		// CALCULAR EL COSTE
+		if (!isEmpty()) {
+			Node<T> act = last.next;
+			do {
+				if (act.data.equals(elem)) {
+					if (act == act.next) {
+						last = null;
+					}else {
+						act.prev.next = act.next;
+						act.next.prev = act.prev;
+						if (act == last) {
+							last = act.prev;
+						}
+					}
+					count--;
+				}
+				act = act.next;
+			} while (last != null && act != last.next);
+		}
 	}
 
 	public T first() {
@@ -176,6 +209,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		}
 
 }
+
 
 
 
