@@ -48,20 +48,21 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public T removeLast() {
 	// Elimina el �ltimo elemento de la lista
         // Precondici�n: 
-		Node<T> aux = null;
+		T aux = null;
 		Node<T> first = last.next;
 		if (last!=null) {
-			if (last.next==first) {
+			if (last==first) {
+				aux = last.data;
 				last=null;
 			}else {
-				aux=last;
+				aux = last.data;
 				last.prev.next=first;
-				first=last.prev;
+				first.prev=last.prev;
 				last=last.prev;
 			}
 			count--;
 		}
-		return aux.data;
+		return aux;
 	}
 
 
@@ -175,6 +176,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		}
 
 }
+
 
 
 
