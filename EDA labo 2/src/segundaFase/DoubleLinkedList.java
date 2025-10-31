@@ -193,6 +193,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 				dato = act.data; 
 			}
 		}
+		return dato;
 	}
 	public boolean isEmpty(){ 
 	//Determina si la lista est� vac�a
@@ -259,6 +260,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	}
 
 }
+
 
 
 
