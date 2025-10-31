@@ -144,7 +144,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 		// COMPLETAR EL CODIGO Y CALCULAR EL COSTE
 		DoubleLinkedList<T> lista = new DoubleLinkedList<T>();
 		lista.last = null;
-		if (last!=null) {
+		if (!isEmpty()) {
 			Node<T> act = last.next;
 			do {
 				Node<T> nuevo = new Node<T>(act.data);
@@ -259,6 +259,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	}
 
 }
+
 
 
 
