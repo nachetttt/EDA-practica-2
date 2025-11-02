@@ -38,7 +38,7 @@ public class RepositorioPublicaciones {
 		}
 	}
 	
-	public void readAutores(String nom) {
+	public void readAutores(String nom) { //CAMBIO
 		try {
 			Scanner entrada = new Scanner(new FileReader(nom));
 			String linea;
@@ -91,7 +91,7 @@ public class RepositorioPublicaciones {
 		citas.get(pId).addToFront(pCita);
 	}
 	
-	public void anadirAutorAPubli(String pIdPubli, String pIdAutor) {
+	public void anadirAutorAPubli(String pIdPubli, String pIdAutor) { //CAMBIO
 		if (!autores.containsKey(pIdPubli)) {
 			autores.put(pIdPubli, new OrderedDoubleLinkedList<String>());
 		}
