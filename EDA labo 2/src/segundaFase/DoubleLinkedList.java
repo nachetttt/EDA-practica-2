@@ -30,7 +30,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         // Precondici�n: 
 		Node<T> first = last.next;
 		T aux = null;
-		if (last!=null) {
+		if (!isEmpty()) {
 			if (last==first) {
 				aux = last.data;
 				last=null;
@@ -50,7 +50,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
         // Precondici�n: 
 		T aux = null;
 		Node<T> first = last.next;
-		if (last!=null) {
+		if (!isEmpty()) {
 			if (last==first) {
 				aux = last.data;
 				last=null;
@@ -260,6 +260,7 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	}
 
 }
+
 
 
 
