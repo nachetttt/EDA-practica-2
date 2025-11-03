@@ -21,18 +21,23 @@ public class Persona implements Comparable<Persona> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Persona other = (Persona) obj;
 		if (dni == null) {
-			if (other.dni != null)
+			if (other.dni != null) {
 				return false;
-		} else if (!dni.equals(other.dni))
+			}
+		} else if (!dni.equals(other.dni)) {
 			return false;
+		}
 		return true;
 	}
 			
@@ -46,3 +51,4 @@ public class Persona implements Comparable<Persona> {
 	}
 	
 } // end Persona
+
