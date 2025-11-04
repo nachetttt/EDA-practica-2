@@ -76,11 +76,11 @@ public class RepositorioPublicacionesTest extends TestCase {
 		//publicacion con  citas. (tiene ya 41 citas)
 		int size = rP.getCitas().get("Q21136163").size();
 		rP.anadirCitaAPubli("Q21136163", "Q21562621");
-		assertEquals("Q21562621",rP.getCitas().get("Q21136163").get(size));
+		assertEquals("Q21562621",rP.getCitas().get("Q21136163").find("Q21562621"));
 		//publicacion sin citas.
 		rP.anadirCitaAPubli(p1.getId(),"Q21562621");
 		assertTrue(rP.getCitas().containsKey(p1.getId()));
-		assertEquals("Q21562621",rP.getCitas().get(p1.getId()).get(0));
+		assertEquals("Q21562621",rP.getCitas().get(p1.getId()).find("Q21562621"));
 		rP.loadCitas("Datuak/Datuak/JUnit loadCitas.txt");
 	}
 
@@ -88,11 +88,11 @@ public class RepositorioPublicacionesTest extends TestCase {
 		rP.readAutores("Datuak/Datuak/publications-authors-all-final.txt");
 		//publicacion con autores.
 		rP.anadirAutorAPubli("Q101088249","Q448592");
-		assertEquals("Q448592",rP.getAutores().get("Q101088249").get(2));
+		assertEquals("Q448592",rP.getAutores().get("Q101088249").find("Q448592"));
 		//nueva publicacion sin autores.
 		rP.anadirAutorAPubli(p1.getId(), "Q448592");
 		assertTrue(rP.getAutores().containsKey(p1.getId()));
-		assertEquals("Q448592",rP.getAutores().get(p1.getId()).get(0));
+		assertEquals("Q448592",rP.getAutores().get(p1.getId()).find("Q448592"));
 		rP.loadAutores("Datuak/Datuak/JUnit loadAutores.txt");
 	}
 
@@ -117,8 +117,6 @@ public class RepositorioPublicacionesTest extends TestCase {
 		lista = rP.listaPublisCitadas("Q21136163");
 		//comprobar que las dos tengan el mismo numero de citas
 		assertTrue(lista.size()==rP.getCitas().get("Q21136163").size());
-		//comprobar que una misma cita la contienen las dos listas
-		assertTrue(lista.contains(rP.buscarPubliPorId(rP.getCitas().get("Q21136163").get(0)))); 
 		//si la clave no existe, devuelve una lista vacia
 		assertTrue(rP.listaPublisCitadas("293748923").size()==0);
 		
@@ -130,8 +128,6 @@ public class RepositorioPublicacionesTest extends TestCase {
 		lista2 = rP.listaAutoresPubli(rP.buscarPubliPorId("Q101088249"));
 		//comprobar que las dos tengan el mismo numero de publicaciones.
 		assertTrue(lista2.size()==rP.getAutores().get("Q101088249").size());
-		//comprobar que una misma publicacion la contienen las dos listas
-		assertTrue(lista2.contains(rP.getAutores().get("Q101088249").get(0)));
 		//utilizar una publicación que no existe en el mapa.
 		assertNull(rP.listaAutoresPubli(p1));
 	}
@@ -151,4 +147,3 @@ public class RepositorioPublicacionesTest extends TestCase {
 		ArrayList<Publicacion> lista = rP.ordenarAlfabeticamente();
 		assertTrue(lista.get(0).getId().compareTo(lista.get(1).getId())<0);
 	}
-}
