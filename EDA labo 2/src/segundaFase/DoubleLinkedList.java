@@ -28,9 +28,10 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public T removeFirst() {
 		// Elimina el primer elemento de la lista
         // Precondici�n: 
-		Node<T> first = last.next;
+		Node<T> first = null;
 		T aux = null;
 		if (!isEmpty()) {
+			first = last.next;
 			if (last==first) {
 				aux = last.data;
 				last=null;
@@ -49,8 +50,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	// Elimina el �ltimo elemento de la lista
         // Precondici�n: 
 		T aux = null;
-		Node<T> first = last.next;
+		Node<T> first = null;
 		if (!isEmpty()) {
+			first = last.next;
 			if (last==first) {
 				aux = last.data;
 				last=null;
@@ -101,27 +103,30 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public void removeAll(T elem) {
 	//Elimina todas las apariciones de un elemento de la lista
 		// CALCULAR EL COSTE
-		if (!isEmpty()) {
+		if(!isEmpty()) {
 			Node<T> act = last.next;
+			int cont = count;
 			do {
-				if (act.data.equals(elem)) {
-					if (act == act.next) {
+				if(act.data.equals(elem)) {
+					if(act.next==act) {
 						last = null;
 					}else {
 						act.prev.next = act.next;
 						act.next.prev = act.prev;
-						if (act == last) {
-							last = act.prev;
+						if(act == last) {
+							last = last.prev;
 						}
+						act = act.next;
 					}
 					count--;
-				}else{
+				}else {
 					act = act.next;
 				}
-			} while (act.prev!=last);
-		}
+				cont--;
+			}while(cont!=0);
+		}	
 	}
-
+	
 	public T first() {
 	//Da acceso al primer elemento de la lista
 		T first = null;
@@ -169,9 +174,9 @@ public class DoubleLinkedList<T> implements ListADT<T> {
 	public boolean contains(T elem) {
 	//Determina si la lista contiene un elemento concreto
 		boolean contiene = false;
-		      if (!isEmpty() && find(elem)!=null) {
-		    	  contiene=true;
-		      }
+		if (!isEmpty() && find(elem)!=null) {
+			contiene=true;
+	    }
 		return contiene;     
 	}
 
