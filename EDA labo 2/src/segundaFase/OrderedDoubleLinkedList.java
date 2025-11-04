@@ -3,7 +3,7 @@ package segundaFase;
 public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements OrderedListADT<T> {
 	
 	public void add(T elem){
-		Node<T> nuevo = new Node<T>(elem);
+		Node<T> nuevo = new Node(elem);
 		if (isEmpty()) {
 			last = nuevo;
 			nuevo.next = nuevo;
@@ -41,16 +41,25 @@ public class OrderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements O
 		lista3.last = null;
 		Node<T> act1 = this.last.next;
 		Node<T> act2 = lista.last.next;
-		while (act1!=this.last && act2!=lista.last) {
-			if (act1.data.equals(act2.data)) {
-				lista3.add(act1.data);
-			}else if (((Comparable<T>)act1.data).compareTo(act2.data)>0){
-				act2 = act2.next;
-			}else {
-				act1 = act1.next;
-			}
+		if (act1!=null && act2!=null) {
+			do {
+				if (act1.data.equals(act2.data)) {
+					lista3.add(act1.data);
+					act1= act1.next;
+					act2=act2.next;
+				}else if (((Comparable<T>)act1.data).compareTo(act2.data)>0){
+					act2 = act2.next;
+				}else {
+					act1 = act1.next;
+				}
+			}while (act1!=this.last.next && act2!=lista.last.next);
 		}
+		
 		return lista3;
 	}
 
 }
+
+
+}
+
