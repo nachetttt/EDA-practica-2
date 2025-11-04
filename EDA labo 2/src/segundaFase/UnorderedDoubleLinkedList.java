@@ -9,10 +9,10 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			nuevo.next = nuevo;
 			nuevo.prev = nuevo;
 		}else {
-			last.next.prev = nuevo;
 			nuevo.next = last.next;
-			last.next = nuevo;
 			nuevo.prev = last;
+			last.next.prev = nuevo;
+			last.next = nuevo;	
 		}
 		count++;
 
@@ -33,7 +33,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 			}else {
 				act = act.next;
 			}
-		}while (!enc && act!=last);
+		}while (!enc && act!=last.next);
 		
 		Node<T> nuevo = new Node<T>(elem);
 		nuevo.next = act.next;
@@ -41,7 +41,7 @@ public class UnorderedDoubleLinkedList<T> extends DoubleLinkedList<T> implements
 		act.next.prev = nuevo;
 		act.next = nuevo;
 		if (act == last) {
-			last = last.next;
+			last = nuevo;
 		}
 		
 		
